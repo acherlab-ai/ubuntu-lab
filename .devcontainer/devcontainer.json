@@ -1,0 +1,28 @@
+
+{
+  "name": "Ubuntu Lab - Node and Python",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "22"
+    },
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.12"
+    }
+  },
+  "forwardPorts": [3000, 5000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Node Web Preview",
+      "onAutoForward": "openBrowser",
+      "visibility": "private"
+    },
+    "5000": {
+      "label": "Python Web Preview",
+      "onAutoForward": "notify",
+      "visibility": "private"
+    }
+  },
+  "postCreateCommand": "npm install && python3 -m venv .venv && .venv/bin/pip install flask",
+  "shutdownAction": "stopContainer"
+}
